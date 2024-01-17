@@ -1,14 +1,12 @@
 package com.example.shoppingCart.validation;
 
 import com.example.shoppingCart.model.Cart;
-import com.example.shoppingCart.model.Product;
 import com.example.shoppingCart.repository.CartRepository;
 import com.example.shoppingCart.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Map;
 
 @Component
 public class ValidationUtils {
