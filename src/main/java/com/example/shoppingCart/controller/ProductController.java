@@ -21,19 +21,17 @@ public ResponseEntity<List<Product>> getAllProducts() {
 }
     @GetMapping("/findById/{productId}")
     public Product findById(@PathVariable int productId) throws Exception {
-        Product byID = productService.findByID(productId);
-        return byID;
+
+        return  productService.findByID(productId);
     }
 
     @PostMapping("/createProduct")
     public ResponseEntity<String> addProduct(@RequestBody Product product){
-        ResponseEntity<String> response = productService.createProduct(product);
-        return response;
+        return productService.createProduct(product);
     }
 
     @DeleteMapping("/removeProduct/{productId}")
     public ResponseEntity<String> removeProduct(@PathVariable int productId) {
-        ResponseEntity<String> response = productService.removeProduct(productId);
-        return response;
+        return productService.removeProduct(productId);
     }
 }
