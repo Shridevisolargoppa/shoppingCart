@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RequestMapping("/api/cart")
 @RestController
@@ -14,6 +16,11 @@ public class CartController {
 
     @Autowired
     CartService cartService;
+@GetMapping("/getall")
+public List<Cart> get()
+{
+    return cartService.get();
+}
 
     @PostMapping("/createCart")
     public ResponseEntity<String> createCart(@RequestBody Cart cart){
@@ -25,7 +32,7 @@ public class CartController {
             cartService.addToCart(request);
     }
 
-    @PostMapping("/removeProduct")
+    @DeleteMapping("/removeProduct")
     public ResponseEntity<String> removeProductFromCart(@RequestBody ProductRequest request){
         return cartService.removeProductFromCart(request);
     }

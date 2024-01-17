@@ -2,6 +2,7 @@ package com.example.shoppingCart.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
@@ -11,22 +12,13 @@ import java.util.Map;
 
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Data
 @Entity
 public class Cart {
 
-    // existing fields...
-
-    @ElementCollection
-    @CollectionTable(name = "cart_products", joinColumns = @JoinColumn(name = "cart_id"))
-    @MapKeyColumn(name = "product_name")
-    @Column(name = "quantity")
-    private Map<String, Integer> products = new HashMap<>();
-
-    public Map<String, Integer> getProducts() {
-        return products;
-    }
+    // existing fields.
     @Id
+
     Long id;
 
     String cartId;
@@ -34,42 +26,11 @@ public class Cart {
     double totalPrice;
 
     String userId;
+    @ElementCollection
+    @CollectionTable(name = "cart_products", joinColumns = @JoinColumn(name = "cart_id"))
+    @MapKeyColumn(name = "product_name")
+    @Column(name = "quantity")
+    private Map<String, Integer> products = new HashMap<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(String cartId) {
-        this.cartId = cartId;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public void setProducts(Map<String, Integer> products) {
-        this.products = products;
-    }
-// getters and setters...
 }
 

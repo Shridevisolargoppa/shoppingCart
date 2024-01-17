@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,14 +42,25 @@ public class CartService {
     }
 
     private void calculateTotalPrice(Cart cart) {
-        Map<String, Integer> productquantityMap = cart.getProducts();
-        double totalPrice = cart.getTotalPrice();
-        for(Map.Entry<String, Integer> entry: productquantityMap.entrySet()){
+        Map<String, Integer> productQuantityMap = cart.getProducts();
+        double totalPrice = 0.0;
+
+        for (Map.Entry<String, Integer> entry : productQuantityMap.entrySet()) {
             String productName = entry.getKey();
+            int quantity = entry.getValue();
+
+            // Retrieve the product information from the repository
             Product product = productRepository.getProductByCategory(productName);
-            totalPrice = totalPrice + product.getPrice() + product.getShippingCharge();
-            cart.setTotalPrice(totalPrice);
+
+            // Calculate the total price for the given quantity of the product
+            double productTotalPrice = (product.getPrice() + product.getShippingCharge()) * quantity;
+
+            // Add the product total price to the overall cart total price
+            totalPrice += productTotalPrice;
         }
+
+        // Set the total price in the cart
+        cart.setTotalPrice(totalPrice);
     }
 
 
@@ -113,5 +125,7 @@ public class CartService {
     }
 
 
-
+    public List<Cart> get() {
+       return cartRepository.findAll();
+    }
 }

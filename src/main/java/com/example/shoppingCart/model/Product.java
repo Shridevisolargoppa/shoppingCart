@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
+@Data
 @Entity
 public class Product {
 
@@ -27,62 +27,6 @@ public class Product {
         String category;
 
         String colour;
-
-        public int getId() {
-                return id;
-        }
-
-        public void setId(int id) {
-                this.id = id;
-        }
-
-        public String getCategory() {
-                return category;
-        }
-
-        public void setCategory(String category) {
-                this.category = category;
-        }
-
-        public String getColour() {
-                return colour;
-        }
-
-        public void setColour(String colour) {
-                this.colour = colour;
-        }
-
-        public Double getPrice() {
-                return price;
-        }
-
-        public void setPrice(Double price) {
-                this.price = price;
-        }
-
-        public String getBrand() {
-                return brand;
-        }
-
-        public void setBrand(String brand) {
-                this.brand = brand;
-        }
-
-        public int getQuantity() {
-                return quantity;
-        }
-
-        public void setQuantity(int quantity) {
-                this.quantity = quantity;
-        }
-
-        public double getShippingCharge() {
-                return shippingCharge;
-        }
-
-        public void setShippingCharge(double shippingCharge) {
-                this.shippingCharge = shippingCharge;
-        }
 
         Double price;
 
