@@ -1,7 +1,6 @@
 package com.example.shoppingCart.controller;
 
 import com.example.shoppingCart.model.Product;
-import com.example.shoppingCart.model.ProductRequest;
 import com.example.shoppingCart.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
