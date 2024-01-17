@@ -33,21 +33,6 @@ public class ValidationUtils {
         }
     }
 
-    public void validateProducts(Cart cart) {
-        Map<String, Integer> products = cart.getProducts();
-        for (Map.Entry<String, Integer> product : products.entrySet()) {
-            String productname = product.getKey();
-            int productQuantity = product.getValue();
-            Product savedProduct = productRepository.getProductByCategory(productname);
-            if (ObjectUtils.isEmpty(savedProduct) || (savedProduct.getQuantity() < productQuantity) && productQuantity > 10) {
-                throw new RuntimeException("Product and quantity does not match");
-            }
-        }
-        if (cart.getProducts().size() > 5) {
-            throw new RuntimeException("Product size should be less than and equals to 5");
-        }
-    }
-
     public Cart cartValidation(String cartId) {
         Cart cart = cartRepository.findBycartId(cartId);
         if (ObjectUtils.isEmpty(cart)) {

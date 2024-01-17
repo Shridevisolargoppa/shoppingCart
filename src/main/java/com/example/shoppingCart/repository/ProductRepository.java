@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface ProductRepository extends JpaRepository<Product, String> {
 
-    boolean existsByColourAndBrandAndCategory(String colour, String brand, String category);
+    boolean existsByColourAndBrandAndCategory(String colour, String brand);
     void deleteById(int id);
     Product findProductById(int productId);
     Product getProductByCategory(String productName);

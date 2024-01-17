@@ -30,8 +30,7 @@ public class ProductService {
             if (!ObjectUtils.isEmpty(product1)) {
                 throw new DuplicateProductException(PRODUCT_ALREADY_EXISTS + " " + "with the Id" + " " + product1.getId());
             }
-            if (productRepository.existsByColourAndBrandAndCategory(product.getColour(), product.getBrand(),
-                    product.getCategory())) {
+            if (productRepository.existsByColourAndBrandAndCategory(product.getColour(), product.getBrand())) {
                 throw new DuplicateProductException(DUPLICATE_PRODUCT);
             }
             Product savedProduct = productRepository.save(product);
