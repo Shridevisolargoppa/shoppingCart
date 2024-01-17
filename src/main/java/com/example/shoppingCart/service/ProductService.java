@@ -3,7 +3,6 @@ package com.example.shoppingCart.service;
 import com.example.shoppingCart.exception.DuplicateProductException;
 import com.example.shoppingCart.exception.ProductNotFoundException;
 import com.example.shoppingCart.model.Product;
-import com.example.shoppingCart.model.ProductRequest;
 import com.example.shoppingCart.repository.ProductRepository;
 import com.example.shoppingCart.repository.ProductRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,10 +56,6 @@ public class ProductService {
         }
     }
 
-    public List<Product> fetchAllProducts() {
-        return productRepository.findAll();
-    }
-
     public Product findByID(int productId) throws Exception {
         Product product = productRepository.findProductById(productId);
        try{ if (product==null) {
@@ -77,7 +72,5 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<ProductRequest> findAllProductRequest() {
-       return productRequestRepository.findAll();
-    }
+
 }
