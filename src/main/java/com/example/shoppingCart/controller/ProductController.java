@@ -21,7 +21,8 @@ public ResponseEntity<List<Product>> getAllProducts() {
 }
     @GetMapping("/findById/{productId}")
     public Product findById(@PathVariable int productId) throws Exception {
-        return productService.findByID(productId);
+        Product byID = productService.findByID(productId);
+        return byID;
     }
 
     @PostMapping("/createProduct")
